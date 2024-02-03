@@ -1,0 +1,40 @@
+# Устанавливаем базовый образ PHP
+FROM php:8.2-fpm
+
+# Установка утилиты unzip
+RUN apt update && apt install -y unzip mc
+
+# Установка supervisord
+RUN apt-get install -y supervisor
+
+# Установка Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Установка дополнительных расширений PHP для Redis
+RUN pecl install redis && docker-php-ext-enable redis
+# Установка библиотеки ImageMagick и её заголовочных файлов
+RUN apt-get install -y libmagickwand-dev
+# Установка расширения Imagick
+RUN pecl install imagick && docker-php-ext-enable imagick
+# Устанавливаем необходимые расширения PHP
+RUN docker-php-ext-install pdo pdo_mysql
+
+
+# Устанавливаем рабочую директорию
+WORKDIR /var/www/html
+# Копирование и установка зависимостей PHP
+COPY src /var/www/html
+RUN composer install
+
+# Публикация провайдеров
+RUN php /var/www/html/artisan vendor:publish --provider="PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider"
+
+
+# Копирование конфигурационного файла supervisord для воркеров очереди
+COPY supervisor_avatars.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Открываем порт для доступа к приложению
+EXPOSE 8000
+
+# Запуск сервисов контейнера
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

@@ -1,0 +1,240 @@
+openapi: 3.0.0
+info:
+  title: 'Пример реализации социальной сети'
+  description: "## Соцальная сеть Шаг и компания \n\n Наша проба сделать хорошую социальную сеть"
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+    description: 'Local API server'
+paths:
+  /api/account/avatar_upload:
+    post:
+      tags:
+        - account
+      summary: 'Update user avatar'
+      operationId: api.account.avatar-upload
+      requestBody:
+        description: 'upload avatar '
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: integer
+                  example: '101'
+                avatar:
+                  type: file
+                  example: 'image content'
+              type: object
+      responses:
+        '200':
+          description: 'avatar his updated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  status: { type: string, example: 'true' }
+                type: object
+  '/api/auth/confirm_email/{id}/{token}':
+    head:
+      tags:
+        - auth
+      summary: 'Confirm a email'
+      operationId: api.auth.confirm_email
+      requestBody:
+        description: 'Token for email confirmation'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                  example: '101'
+                token:
+                  type: string
+                  example: bb93c30a-9cac-4827-924b-1be4dfe1ceb8
+              type: object
+      responses:
+        '200':
+          description: 'email confirmed'
+          content:
+            application/json:
+              schema:
+                properties:
+                  status: { type: string, example: 'Redirect to /' }
+                type: object
+  /api/auth/login:
+    post:
+      tags:
+        - auth
+      summary: 'Login a user'
+      operationId: api.auth.login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessLoginResource'
+        '422':
+          description: 'invalid password'
+          content:
+            application/json:
+              schema:
+                properties:
+                  status: { type: string, example: error }
+                  message: { type: string, example: Unauthorized }
+                type: object
+  /api/auth/register:
+    post:
+      tags:
+        - auth
+      summary: 'Register a user'
+      operationId: api.auth.register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessLoginResource'
+        '422':
+          description: 'password confirmation'
+          content:
+            application/json:
+              schema:
+                properties:
+                  status: { type: string, example: error }
+                  message: { type: string, example: 'password confirmation.' }
+                type: object
+components:
+  schemas:
+    ValidationError:
+      properties:
+        message:
+          type: string
+          example: 'The given data was invalid.'
+        errors:
+          properties:
+            'key 1':
+              type: array
+              items:
+                type: string
+                example: 'Error message 1'
+            'key 2':
+              type: array
+              items:
+                type: string
+                example: 'Error message 2'
+          type: object
+      type: object
+    LoginRequest:
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: john@example.com
+        password:
+          type: string
+          example: '123456'
+      type: object
+    RegisterRequest:
+      required:
+        - name
+        - email
+        - password
+        - password_confirmation
+      properties:
+        name:
+          type: string
+          example: 'John Doe'
+        email:
+          type: string
+          format: email
+          example: john@example.com
+        password:
+          type: string
+          example: '123456'
+        password_confirmation:
+          type: string
+          example: '123456'
+      type: object
+    SuccessLoginResource:
+      properties:
+        status:
+          type: string
+          example: 'true'
+        user:
+          $ref: '#/components/schemas/User'
+        authorisation:
+          $ref: '#/components/schemas/TokenResource'
+      type: object
+    TokenResource:
+      properties:
+        token:
+          type: string
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9hdXRoL3JlZ2lzdGVyIiwiaWF0IjoxNzA2NTUyMTM4LCJleHAiOjE3MDY5MTIxMzgsIm5iZiI6MTcwNjU1MjEzOCwianRpIjoiRk9hclkyZ2VvckhPT1llbSIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3IiwiZW1haWwiOiJ2YXN5YTJAdmFzeWEuY29tIiwibmFtZSI6InZhc3lhMiJ9.APeVTaT7gnkVVboKkfXDndq1vjQFiiaMPCw21aS9hL8
+        type:
+          type: string
+          example: bearer
+      type: object
+    User:
+      properties:
+        id:
+          type: integer
+          example: '2'
+        name:
+          type: string
+          example: 'John Doe'
+        email:
+          type: string
+          format: email
+          example: john@example.com
+        email_verified:
+          type: boolean
+          example: '1'
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-02-03T21:06:04.000000Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-02-03T21:06:04.000000Z'
+        confirmation_token:
+          type: url
+          example: 8ccde004-4c26-453e-a3f7-a73145dfb4a1
+        avatar_url:
+          type: string
+          example: 'http://localhost/storage/avatars/108/original.webp'
+      type: object
+  securitySchemes:
+    BearerToken:
+      type: http
+      bearerFormat: JWT
+      scheme: bearer
+tags:
+  -
+    name: auth
+    description: 'User authentication'
+  -
+    name: post
+    description: 'Операции с постами'
