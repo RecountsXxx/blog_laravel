@@ -110,6 +110,34 @@ services:
     networks:
       - sne
 
+  db.redis.socket:
+    build:
+      dockerfile: ./services/redis/Dockerfile
+      context: .
+    container_name: db.redis.sockets
+    volumes:
+      - ./volumes/db/redis/sockets:/data
+    networks:
+      - sne
+
+  socket.sunny:
+    build:
+      dockerfile: Dockerfile
+      context: ./back/sockets
+    container_name: socket.sunny
+    volumes:
+      - ./back/sockets/src:/usr/src/app
+    env_file:
+      - ./.env
+    environment:
+      - SERVER_NAME=socketJonny
+      - SERVER_PORT=3000
+    networks:
+      - sne
+    depends_on:
+      - laravel.api
+      - db.redis.socket
+
   # Этот сервер будет содержать кеш сайта
   db.redis.cache:
     build:

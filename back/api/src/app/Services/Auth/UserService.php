@@ -19,7 +19,7 @@ class UserService
 
         $user->notify(new SendVerificationMailNotification($user));
 
-        GenerateGravatarForUser::dispatch($user->id)->onQueue('my_queue');
+        GenerateGravatarForUser::dispatch($user->id)->onQueue('avatars.jobs');
 
         return $user;
     }
