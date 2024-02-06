@@ -30,3 +30,8 @@ Route::middleware(['check.auth.jwt'])->group(function () {
     Route::post('account/avatar-upload', AvatarUploadController::class)->name('api.account.avatar_upload');
 
 });
+
+//сделай middleware для админа токо админ может создать категории
+Route::resource('category',\App\Http\Controllers\Category\CategoryController::class);
+
+Route::resource('post',\App\Http\Controllers\Posts\PostController::class);

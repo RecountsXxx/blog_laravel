@@ -122,6 +122,278 @@ paths:
                   status: { type: string, example: error }
                   message: { type: string, example: 'password confirmation.' }
                 type: object
+  /api/category:
+    get:
+      tags:
+        - categories
+      summary: 'Get all categories'
+      operationId: api.category.index
+      responses:
+        '200':
+          description: 'retun all categories'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+    put:
+      tags:
+        - categories
+      summary: 'Update category per id'
+      operationId: api.category.update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: integer
+                  example: '9'
+                name:
+                  type: string
+                  example: 'new name'
+              type: object
+      responses:
+        '200':
+          description: 'return category'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: 'return error if category is not exists'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'not found' }
+                type: object
+    post:
+      tags:
+        - categories
+      summary: 'Add category'
+      operationId: api.category.store
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+      responses:
+        '200':
+          description: 'return new created category'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: 'return error if category is exitst'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'this category already exists' }
+                type: object
+  '/api/category/{$id}':
+    get:
+      tags:
+        - categories
+      summary: 'Show category per id'
+      operationId: api.category.show
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: integer
+                  example: '9'
+              type: object
+      responses:
+        '200':
+          description: 'return category'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: 'return error if category is not exists'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'not found' }
+                type: object
+    delete:
+      tags:
+        - categories
+      summary: 'Delete category per id'
+      operationId: api.category.destroy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: integer
+                  example: '9'
+              type: object
+      responses:
+        '200':
+          description: 'return message'
+          content:
+            application/json:
+              schema:
+                properties:
+                  string: { type: string, example: 'deleted category: 9' }
+                type: object
+        '400':
+          description: 'return error if category is not exists'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'not found' }
+                type: object
+  '/api/post/{$category_id}':
+    get:
+      tags:
+        - post
+      summary: 'Get all posts on category'
+      operationId: api.post.index
+      responses:
+        '200':
+          description: 'retun all posts on categories'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+  /api/post:
+    put:
+      tags:
+        - post
+      summary: 'Update post per id'
+      operationId: api.post.update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: integer
+                  example: '9'
+                title:
+                  type: string
+                  example: 'How to create react app'
+                text:
+                  type: string
+                  example: 'I like codding in react'
+                author_id:
+                  type: integer
+                  example: '2'
+                category_id:
+                  type: integer
+                  example: '2'
+              type: object
+      responses:
+        '200':
+          description: 'return post'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '400':
+          description: 'return error if post is not exists'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'not found' }
+                type: object
+    post:
+      tags:
+        - post
+      summary: 'Add post'
+      operationId: api.post.store
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequest'
+      responses:
+        '200':
+          description: 'return new created post'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+  '/api/post/{$id}':
+    get:
+      tags:
+        - post
+      summary: 'Show post per id'
+      operationId: api.post.show
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: integer
+                  example: '9'
+              type: object
+      responses:
+        '200':
+          description: 'return category'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '400':
+          description: 'return error if post is not exists'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'not found' }
+                type: object
+    delete:
+      tags:
+        - post
+      summary: 'Delete post per id'
+      operationId: api.post.destroy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: integer
+                  example: '9'
+              type: object
+      responses:
+        '200':
+          description: 'return message'
+          content:
+            application/json:
+              schema:
+                properties:
+                  string: { type: string, example: 'deleted post: 9' }
+                type: object
+        '400':
+          description: 'return error if post is not exists'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'not found' }
+                type: object
 components:
   schemas:
     ValidationError:
@@ -176,6 +448,70 @@ components:
         password_confirmation:
           type: string
           example: '123456'
+      type: object
+    CategoryResponse:
+      properties:
+        id:
+          type: integer
+          example: '1'
+        name:
+          type: string
+          example: News
+        post_count:
+          type: integer
+          example: '3'
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-02-06T19:22:50.000000Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-02-06T19:22:50.000000Z'
+      type: object
+    CategoryRequest:
+      properties:
+        name:
+          type: string
+          example: News
+      type: object
+    PostRequest:
+      properties:
+        title:
+          type: string
+          example: 'How to create react app'
+        text:
+          type: string
+          example: 'I like codding in react'
+        author_id:
+          type: integer
+          example: '2'
+        category_id:
+          type: integer
+          example: '2'
+      type: object
+    PostResponse:
+      properties:
+        title:
+          type: string
+          example: 'How to create react app'
+        text:
+          type: string
+          example: 'I like codding in react'
+        author_id:
+          type: integer
+          example: '2'
+        category_id:
+          type: integer
+          example: '2'
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-02-06T19:22:50.000000Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-02-06T19:22:50.000000Z'
       type: object
     SuccessLoginResource:
       properties:

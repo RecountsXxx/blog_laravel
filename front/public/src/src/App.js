@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import { io } from 'socket.io-client';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import NavMenu from "./layouts/nav-menu";
 
 function App() {
 
@@ -12,8 +12,6 @@ function App() {
   let socket = io('/', {
     autoConnect: true
   });
-
-
   // Поведение при событии - соединился
   socket.on('connect', (data) => {
     console.log('connect')
@@ -41,28 +39,24 @@ function App() {
     toast.warning("From Laravel: " + data);
   })
 
-
-
   console.log('App Starting')
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World !!!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <ToastContainer />
-    </div>
+      <div className="App">
+        <div className="container-fluid vh-100">
+          <div className=" row h-100">
+            <div className="p-0 col-md-2 text-white nav_menu"> {/* Боковой хеадер */}
+             <NavMenu></NavMenu>
+            </div>
+            <div className="col-md-5 bg-secondary"> {/* Средняя часть слева */}
+              Средняя часть слева
+            </div>
+            <div className="col-md-5 bg-black"> {/* Средняя часть справа */}
+              Средняя часть справа
+            </div>
+          </div>
+        </div>
+      </div>
   );
 }
 
