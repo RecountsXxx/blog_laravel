@@ -12,7 +12,7 @@ use OpenApi\Attributes as OAT;
     tags: ['auth'],
     path: '/api/auth/register',
     summary: 'Register a user',
-    operationId: 'api.auth.register',
+    operationId: 'api.auth.registerPage',
     requestBody: new OAT\RequestBody(
         required: true,
         content: new OAT\JsonContent(ref: '#/components/schemas/RegisterRequest')

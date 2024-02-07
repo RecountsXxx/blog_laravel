@@ -19,7 +19,11 @@ class CategoryController extends Controller
         tags: ['categories'],
         path: '/api/category',
         summary: 'Get all categories',
+<<<<<<< HEAD
+        operationId: 'api.category.main',
+=======
         operationId: 'api.category.index',
+>>>>>>> 458b4afb329d8221f3ed6afa97c6146f49316ad7
         responses: [
             new OAT\Response(
                 response: 200,
