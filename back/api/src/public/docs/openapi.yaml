@@ -127,11 +127,7 @@ paths:
       tags:
         - categories
       summary: 'Get all categories'
-<<<<<<< HEAD
-      operationId: api.category.main
-=======
       operationId: api.category.index
->>>>>>> 458b4afb329d8221f3ed6afa97c6146f49316ad7
       responses:
         '200':
           description: 'retun all categories'
@@ -266,11 +262,7 @@ paths:
       tags:
         - post
       summary: 'Get all posts on category'
-<<<<<<< HEAD
-      operationId: api.post.main
-=======
       operationId: api.post.index
->>>>>>> 458b4afb329d8221f3ed6afa97c6146f49316ad7
       responses:
         '200':
           description: 'retun all posts on categories'

@@ -14,19 +14,11 @@ import RegisterPage from "./pages/auth/RegisterPage";
 
 
 
-
-
-import NavMenu from "./layouts/nav-menu";
-
 function App() {
 
   let socket = io('/', {
     autoConnect: true
   });
-<<<<<<< HEAD
-=======
-  // Поведение при событии - соединился
->>>>>>> 458b4afb329d8221f3ed6afa97c6146f49316ad7
   socket.on('connect', (data) => {
     console.log('connect')
   })
@@ -52,7 +44,6 @@ function App() {
 
   return (
       <div className="App">
-<<<<<<< HEAD
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
               crossOrigin="anonymous"/>
@@ -72,21 +63,6 @@ function App() {
                 <Route path="/register" element={<RegisterPage/>}></Route>
               </Routes>
             </BrowserRouter>
-
-
-=======
-        <div className="container-fluid vh-100">
-          <div className=" row h-100">
-            <div className="p-0 col-md-2 text-white nav_menu"> {/* Боковой хеадер */}
-             <NavMenu></NavMenu>
-            </div>
-            <div className="col-md-5 bg-secondary"> {/* Средняя часть слева */}
-              Средняя часть слева
-            </div>
-            <div className="col-md-5 bg-black"> {/* Средняя часть справа */}
-              Средняя часть справа
-            </div>
->>>>>>> 458b4afb329d8221f3ed6afa97c6146f49316ad7
           </div>
         </div>
       </div>

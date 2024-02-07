@@ -19,11 +19,7 @@ class PostController extends Controller
         tags: ['post'],
         path: '/api/post/{$category_id}',
         summary: 'Get all posts on category',
-<<<<<<< HEAD
-        operationId: 'api.post.main',
-=======
         operationId: 'api.post.index',
->>>>>>> 458b4afb329d8221f3ed6afa97c6146f49316ad7
         responses: [
             new OAT\Response(
                 response: 200,

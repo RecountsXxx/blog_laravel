@@ -33,5 +33,5 @@ Route::middleware(['check.auth.jwt'])->group(function () {
 
 //сделай middleware для админа токо админ может создать категории
 Route::resource('category',\App\Http\Controllers\Category\CategoryController::class);
-
+//пост только для авторизированого юзера
 Route::resource('post',\App\Http\Controllers\Posts\PostController::class);
