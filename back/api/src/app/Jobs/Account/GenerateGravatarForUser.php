@@ -29,7 +29,7 @@ class GenerateGravatarForUser implements ShouldQueue
     {
         \Laravel\Prompts\info("handle job");
         $avaService->createAvatar($this->user_id);
-        $socketService->emit('socket.php', "From Job aaas " . date('Y-m-d H:i:s'));
+        $socketService->emit('socket.php', "From Job generate avatar " . date('Y-m-d H:i:s'));
 
     }
 }

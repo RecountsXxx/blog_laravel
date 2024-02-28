@@ -58,9 +58,19 @@ class RegisterController extends Controller
         if ($request->input('password') != $request->input('password_confirmation')){
             return response()->json([
                 'status' => 'error',
-                'message' => 'password confirmation',
-            ], 422);
+                'message' => 'Password confirmation',
+            ], 401);
         }
+
+
+        if ($this->userService->findOrFail($request->input('email'))!= null){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'This email already taken',
+            ], 401);
+        }
+
+
         $this->userService->create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),

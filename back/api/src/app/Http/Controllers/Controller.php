@@ -21,7 +21,7 @@ use OpenApi\Attributes as OAT;
         bearerFormat: 'JWT',
         type: 'http'
     ),
-    OAT\Tag(name: 'auth', description: 'User authentication'),
+    OAT\Tag(name: 'auth', description: 'Admin authentication'),
     OAT\Tag(name: 'post', description: 'Операции с постами'),
     OAT\Schema(
         schema: 'ValidationError',

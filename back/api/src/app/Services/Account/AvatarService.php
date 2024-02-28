@@ -2,7 +2,7 @@
 
 namespace App\Services\Account;
 
-use App\Repositories\UserRepository;
+use App\Repositories\User\UserRepository;
 use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Http\UploadedFile;
 

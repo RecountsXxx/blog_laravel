@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->boolean('email_verified')->default(0);
             $table->string('password');
+            $table->string('confirmation_token')->nullable();
+            $table->string('avatar_url')->nullable();
+            $table->boolean('is_banned')->default(0);
+            $table->boolean('is_banned_posts')->default(0);
+            $table->boolean('is_banned_comments')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

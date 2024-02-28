@@ -22,8 +22,8 @@ class AvatarUploadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required','int'],
-            'avatar' => ['required','image'],
+            'user_id' =>['required','int','exists:users,id'],
+            'avatar' => ['required','file'],
         ];
     }
 }

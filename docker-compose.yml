@@ -69,6 +69,24 @@ services:
       - db.redis.cache
       - db.redis.jobs
 
+  laravel.api.admin:
+    build:
+      dockerfile: Dockerfile_api
+      context: back/api_admin
+    container_name: laravel.api_admin
+    volumes:
+      - ./back/api_admin/src:/var/www/html
+      # Можно монтировать внешнюю папку в место хранилища
+      # - ./volumes/api/storage:/var/www/html/storage
+    ports:
+      - '8001:8001'
+    env_file:
+      - ./.env
+    networks:
+      - sne
+    depends_on:
+      - db.mysql.main
+      - db.redis.cache
 # Profit
 
 # -----------------------------------------------------------------

@@ -4,7 +4,7 @@ namespace App\Services\Auth;
 
 use App\Jobs\Account\GenerateGravatarForUser;
 use App\Notifications\SendVerificationMailNotification;
-use App\Repositories\UserRepository;
+use App\Repositories\User\UserRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -23,6 +23,9 @@ class UserService
 
         return $user;
     }
-
+    public function findOrFail($email)
+    {
+        return $this->userRepository->get(['email'=>$email],true);
+    }
 
 }

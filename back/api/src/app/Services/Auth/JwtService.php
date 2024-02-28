@@ -24,7 +24,10 @@ class JwtService
         $token = Auth::guard('api')->attempt($data);
         return $token;
     }
-
+    public function userLogout(): void
+    {
+        Auth::guard('api')->logout();
+    }
     public function buildResponse(string|null $token)
     {
         if (!$token) {

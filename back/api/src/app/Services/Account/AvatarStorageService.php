@@ -2,8 +2,7 @@
 
 namespace App\Services\Account;
 
-use App\Repositories\UserRepository;
-use Illuminate\Http\UploadedFile;
+use App\Repositories\User\UserRepository;
 use Illuminate\Support\Facades\Storage;
 
 class AvatarStorageService

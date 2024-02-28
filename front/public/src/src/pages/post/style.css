@@ -1,0 +1,10 @@
+.selected-post {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.comment-text-sm {
+    word-wrap: break-word; /* Для поддержки в старых браузерах */
+    overflow-wrap: break-word; /* Для современных браузеров */
+}
+

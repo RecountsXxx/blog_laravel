@@ -56,6 +56,16 @@ use OpenApi\Attributes as OAT;
             example: '2'
         ),
         new OAT\Property(
+            property: 'views_count',
+            type: 'int',
+            example: '2'
+        ),
+        new OAT\Property(
+            property: 'likes_count',
+            type: 'int',
+            example: '2'
+        ),
+        new OAT\Property(
             property: 'created_at',
             type: 'datetime',
             example: '2024-02-06T19:22:50.000000Z'
@@ -88,8 +98,8 @@ class PostRequest extends FormRequest
         return [
             'title' => ['required','string'],
             'text' => ['required','string'],
-            'category_id' => ['integer'],
-            'author_id' => ['integer'],
+            'category_id' => ['int','required','exists:categories,id'],
+            'author_id' => ['int','required','exists:users,id'],
         ];
     }
 }

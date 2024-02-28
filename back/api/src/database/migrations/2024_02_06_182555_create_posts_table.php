@@ -15,9 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('text');
-            $table->unsignedBigInteger('author_id')->default(0);
-            $table->unsignedBigInteger('category_id')->default(0);
+            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('category_id');
+            $table->bigInteger('views_count')->default(0);
+            $table->bigInteger('likes_count')->default(0);
             $table->timestamps();
+
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

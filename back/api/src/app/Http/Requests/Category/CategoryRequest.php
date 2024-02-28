@@ -33,8 +33,7 @@ use OpenApi\Attributes as OAT;
             property: 'updated_at',
             type: 'datetime',
             example: '2024-02-06T19:22:50.000000Z'
-        ),
-
+        )
     ]
 )]
 
@@ -67,7 +66,7 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','string'],
+
         ];
     }
 }

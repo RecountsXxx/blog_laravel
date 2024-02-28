@@ -6,3 +6,24 @@
   background: rgb(86, 187, 183);
 }
 
+
+.fade-enter {
+  opacity: 0;
+  transform: translateY(20px); /* Начальное положение компонента при появлении */
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0); /* Конечное положение компонента при появлении */
+  transition: opacity 300ms, transform 300ms; /* Длительность и тип анимации */
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(20px); /* Положение компонента при исчезновении */
+  transition: opacity 300ms, transform 300ms; /* Длительность и тип анимации */
+}

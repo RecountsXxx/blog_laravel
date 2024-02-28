@@ -1,46 +1,50 @@
+"use strict";
 import './App.css';
-import React from 'react'
+import React, {useState} from 'react'
 
 import { io } from 'socket.io-client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import NavMenu from "./layouts/nav-menu";
+import NavMenu from "./templates/Nav";
 import MainPage from "./pages/main/MainPage";
 
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
-
+import Account from "./pages/account/Account";
+import axios from "axios";
+import Editor from "./pages/editor/EditorComponent";
 
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState(1);
+  const [selectedPost, setSelectedPost] = useState(1);
 
-  let socket = io('/', {
-    autoConnect: true
-  });
-  socket.on('connect', (data) => {
-    console.log('connect')
-  })
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('token') !== null);
 
-  socket.on('disconnect', (data) => {
-    console.log('disconnect')
-    console.log(data)
-    toast.error('Disconnect')
-  })
-  socket.on ('socket.myNameIs', (data) => {
-    console.log('MyName Is')
-    console.log(data)
-    toast.info("Server name: " + data);
-  })
-  socket.on ('socket.ping', (data) => {
-    toast.dark("Ping: " + Date(data));
-  })
-  socket.on ('socket.php', (data) => {
-    toast.warning("From Laravel: " + data);
-  })
-
-  console.log('App Starting')
+  if(localStorage.getItem('token') != null){
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+  }
+  // let socket = io('/', {
+  //   autoConnect: true
+  // });
+  // socket.on('connect', (data) => {
+  //   console.log('connect')
+  // })
+  //
+  // socket.on('disconnect', (data) => {
+  //   console.log('disconnect')
+  //   console.log(data)
+  // })
+  // socket.on ('socket.myNameIs', (data) => {
+  //   console.log('MyName Is')
+  //   console.log(data)
+  // })
+  // socket.on ('socket.php', (data) => {
+  //   toast.warning("From Laravel: " + data);
+  // })
+  //
+  // console.log('App Starting')
 
   return (
       <div className="App">
@@ -54,13 +58,17 @@ function App() {
           <div className=" row h-100">
 
             <BrowserRouter>
-              <div className="p-0 col-md-2 text-white nav_menu"> {/* Боковой хеадер */}
-                <NavMenu></NavMenu>
+              <div className="p-0 col-md-2 text-white nav_menu">
+                <NavMenu   onSelectCategory={setSelectedCategory}></NavMenu>
               </div>
               <Routes>
-                <Route path="/" element={<MainPage/>}></Route>
+                <Route path="/" element={<MainPage selectedPost={selectedPost} selectPost={setSelectedPost} selectedCategory={selectedCategory}/>}></Route>
+                  <Route path="/post/:postId" element={<MainPage selectedPost={selectedPost} selectPost={setSelectedPost} selectedCategory={selectedCategory}/>}></Route>
                 <Route path="/login" element={<LoginPage/>}></Route>
                 <Route path="/register" element={<RegisterPage/>}></Route>
+                {isAuthenticated && <Route path="/editor" element={<Editor />} />}
+                {isAuthenticated && <Route path="/account" element={<Account />} />}
+
               </Routes>
             </BrowserRouter>
           </div>

@@ -1,0 +1,24 @@
+.search{
+    border-bottom: 1.5px solid darkgray;
+    padding: 5px;
+
+}
+
+.add_post{
+    padding: 6px;
+    background: rgb(86, 187, 183);
+    border-radius: 5px;
+}
+.header{
+    width: 100%;
+    padding-bottom: 25px;
+    border-bottom: 1px solid darkgray;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search_input{
+    background: transparent;
+    border: none;
+    border-right: 2px solid white;
+}

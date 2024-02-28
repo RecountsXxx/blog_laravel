@@ -1,0 +1,12 @@
+.all_posts{
+        background: rgb(96, 131, 139);
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.post{
+    background: white;
+
+        max-height: 100%;
+        overflow-y: auto;
+}
