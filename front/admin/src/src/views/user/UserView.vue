@@ -1,0 +1,130 @@
+<template>
+  <main class="p-3">
+    <h1 class="text-black mt-2 mb-4">Users</h1>
+    <input class="input-group form-control mb-3" type="text" v-model="searchQuery" placeholder="Search...">
+    <div style="max-height: 800px; overflow-y: auto;">
+      <table class="table table-striped w-100">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Avatar</th>
+          <th>Email</th>
+          <th>Banned posts</th>
+          <th>Banned comments</th>
+          <th>Created at</th>
+          <th>Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user in filteredUsers" :key="user.id">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td><img :src="user.avatar_url" width="30px" height="30px"  alt=""/></td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.is_banned_posts }}</td>
+          <td>{{ user.is_banned_comments }}</td>
+          <td>{{ user.created_at }}</td>
+          <td class="d-flex gap-3 flex-row">
+            <button class="btn btn-danger" @click="deleteUser(user.id)">Delete user</button>
+            <button class="btn btn-danger" @click="banPosts(user.id)">Ban posts</button>
+            <button class="btn btn-danger" @click="banComments(user.id)">Ban comments</button>
+            <button class="btn btn-primary" @click="unban(user.id)">Unban user</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  name: 'userView',
+  data() {
+    return {
+      users: [],
+      searchQuery: ''
+    };
+  },
+  computed: {
+    filteredUsers() {
+      return this.users.filter(user =>
+          user.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
+  created() {
+    this.fetchUsers();
+  },
+  methods: {
+    async fetchUsers() {
+      try {
+        const response = await axios.get('/api/admin/user');
+        console.log(response.data.data[0]);
+        this.users = response.data.data[0];
+      } catch (error) {
+        console.error('Error:', error.response);
+      }
+    },
+    async deleteUser(userId){
+      try {
+        await axios.delete('/api/admin/user/' + userId);
+        this.users = this.users.filter(item => item.id !== userId);
+        this.$notify('Deleted');
+      } catch (error) {
+        console.error('Error:', error.response);
+      }
+    },
+    async banPosts(userId){
+      try {
+        await axios.post('/api/admin/user/ban_posts/' + userId);
+        this.users = this.users.map(user => {
+          if (user.id === userId) {
+            user.is_banned_posts = 1;
+          }
+          return user;
+        });
+        this.$notify('Banned');
+      } catch (error) {
+        console.error('Error:', error.response);
+      }
+    },
+    async banComments(userId){
+      try {
+        await axios.post('/api/admin/user/ban_comments/' + userId);
+        this.users = this.users.map(user => {
+          if (user.id === userId) {
+            user.is_banned_comments = 1;
+          }
+          return user;
+        });
+        this.$notify('Banned');
+      } catch (error) {
+        console.error('Error:', error.response);
+      }
+    },
+    async unban(userId){
+      try {
+        await axios.post('/api/admin/user/unban/' + userId);
+        this.users = this.users.map(user => {
+          if (user.id === userId) {
+            user.is_banned_comments = 0;
+            user.is_banned_posts = 0;
+          }
+          return user;
+        });
+        this.$notify('Unbanned');
+      } catch (error) {
+        console.error('Error:', error.response);
+      }
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
