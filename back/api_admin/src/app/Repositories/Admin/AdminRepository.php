@@ -4,6 +4,7 @@ namespace App\Repositories\Admin;
 
 use App\Models\Admin\Admin;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\DB;
 
 class AdminRepository extends BaseRepository
 {
@@ -12,5 +13,9 @@ class AdminRepository extends BaseRepository
         parent::__construct($admin);
     }
 
+    public function count()
+    {
+        return DB::table('admins')->count();
+    }
 
 }

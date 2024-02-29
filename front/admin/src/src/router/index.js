@@ -16,7 +16,7 @@ const router = createRouter({
     {path: '/user', component: UserView},
     {path: '/admin', component: AdminView},
     {path: '/report_post', component: ReportPostsView},
-    {path: '/repost_comment', component: ReportCommentsView},
+    {path: '/report_comment', component: ReportCommentsView},
   ]
 })
 

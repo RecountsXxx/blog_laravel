@@ -26,6 +26,8 @@ class User extends Authenticatable implements JWTSubject
         'confirmation_token',
         'email_verified',
         'avatar_url',
+        'is_banned_posts',
+        'is_banned_comments'
     ];
 
     /**

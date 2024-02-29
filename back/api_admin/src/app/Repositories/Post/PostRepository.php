@@ -4,6 +4,7 @@ namespace App\Repositories\Post;
 
 use App\Models\Post\Post;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\DB;
 
 class PostRepository extends BaseRepository
 {
@@ -17,5 +18,10 @@ class PostRepository extends BaseRepository
     {
         $post = $this->post->with(['author', 'comments.author:id,name,avatar_url'])->find($post_id);
         return $post;
+    }
+
+    public function count()
+    {
+        return DB::table('posts')->count();
     }
 }

@@ -18,4 +18,9 @@ class ReportComment extends Model
     {
         return $this->belongsTo(User::class, 'who_report_id');
     }
+
+    public function comment()
+    {
+        return $this->belongsTo(Comment::class);
+    }
 }
