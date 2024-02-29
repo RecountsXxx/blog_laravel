@@ -1,5 +1,5 @@
-<h5>I made an example of a blog where you can create your own posts, comment, complain about posts and comments, view posts, and all this can be managed through the admin panel.
-</h5>![Знімок екрана з 2024-02-29 18-34-40](https://github.com/RecountsXxx/blog_laravel/assets/107986811/6bc30b50-2f6a-4f1c-8e86-446e55e15cd8)
+I made an example of a blog where you can create your own posts, comment, complain about posts and comments, view posts, and all this can be managed through the admin panel.
+![Знімок екрана з 2024-02-29 18-34-40](https://github.com/RecountsXxx/blog_laravel/assets/107986811/6bc30b50-2f6a-4f1c-8e86-446e55e15cd8)
 ![Знімок екрана з 2024-02-29 18-34-24](https://github.com/RecountsXxx/blog_laravel/assets/107986811/26bed455-3b39-424f-bd45-2bc8833de703)
 ![Знімок екрана з 2024-02-29 18-32-49](https://github.com/RecountsXxx/blog_laravel/assets/107986811/cf056f21-93e2-49a1-9c9c-9524f6c10fdf)
 ![Знімок екрана з 2024-02-29 18-32-34](https://github.com/RecountsXxx/blog_laravel/assets/107986811/503e344b-d06a-4e0a-ac88-9190bf78cba3)
