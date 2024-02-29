@@ -1,8 +1,8 @@
 I made an example of a blog where you can create your own posts, comment, complain about posts and comments, view posts, and all this can be managed through the admin panel.
 ![Знімок екрана з 2024-02-29 18-32-34](https://github.com/RecountsXxx/blog_laravel/assets/107986811/503e344b-d06a-4e0a-ac88-9190bf78cba3)
-![Знімок екрана з 2024-02-29 18-34-40](https://github.com/RecountsXxx/blog_laravel/assets/107986811/6bc30b50-2f6a-4f1c-8e86-446e55e15cd8)
 ![Знімок екрана з 2024-02-29 18-34-24](https://github.com/RecountsXxx/blog_laravel/assets/107986811/26bed455-3b39-424f-bd45-2bc8833de703)
 ![Знімок екрана з 2024-02-29 18-32-49](https://github.com/RecountsXxx/blog_laravel/assets/107986811/cf056f21-93e2-49a1-9c9c-9524f6c10fdf)
+![Знімок екрана з 2024-02-29 18-34-40](https://github.com/RecountsXxx/blog_laravel/assets/107986811/6bc30b50-2f6a-4f1c-8e86-446e55e15cd8)
 ![Знімок екрана з 2024-02-29 18-35-48](https://github.com/RecountsXxx/blog_laravel/assets/107986811/ffef1a55-27d9-4584-939b-a18e524e3608)
 ![Знімок екрана з 2024-02-29 18-39-14](https://github.com/RecountsXxx/blog_laravel/assets/107986811/6aecc1a7-d1ec-438e-9dce-b962fc8ffa22)
 ![Знімок екрана з 2024-02-29 18-39-06](https://github.com/RecountsXxx/blog_laravel/assets/107986811/a8e973aa-10c9-44e2-8954-3f42b17efdd4)
