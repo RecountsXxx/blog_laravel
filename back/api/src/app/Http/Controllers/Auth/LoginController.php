@@ -10,11 +10,7 @@ use OpenApi\Attributes as OAT;
 
 class LoginController extends Controller
 {
-    public function __construct(
-        private JwtService $jwtService,
-    )
-    {
-    }
+    public function __construct(private JwtService $jwtService,){}
     #[OAT\Post(
         tags: ['auth'],
         path: '/api/auth/login',

@@ -10,8 +10,6 @@ use OpenApi\Attributes as OAT;
 class UserChangeDataController extends Controller
 {
     public function __construct(private AccountService $accountService){}
-
-
     #[OAT\Put(
         tags: ['account'],
         path: '/api/account/update-user',

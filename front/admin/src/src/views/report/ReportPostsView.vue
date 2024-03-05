@@ -8,6 +8,7 @@
           <th>Id</th>
           <th>Post_id</th>
           <th>Who_report_id</th>
+          <th>Wrongdoer_id</th>
           <th>Created at</th>
         </tr>
         </thead>
@@ -16,10 +17,11 @@
           <td>{{ report.id }}</td>
           <td>{{ report.post_id }}</td>
           <td>{{ report.who_report_id }}</td>
+          <td>{{ report.post.author_id }}</td>
           <td>{{ report.created_at }}</td>
           <td class="d-flex gap-3 flex-row">
             <button class="btn btn-danger" @click="deleteReport(report.id)">Delete report</button>
-            <button class="btn btn-danger" @click="banReport(report.id)">Ban report</button>
+            <button class="btn btn-danger" @click="banReport(report.post.author_id,report.id)">Ban user</button>
             <button class="btn btn-primary"><a class="text-decoration-none text-white" :href="'http://localhost/post/' + report.post_id">View post</a></button>
           </td>
         </tr>
@@ -49,6 +51,7 @@ export default {
         this.reports = response.data.data[0];
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     async deleteReport(reportId){
@@ -58,15 +61,18 @@ export default {
         this.$notify('Deleted');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
-    async banReport(reportId){
+    async banReport(userId,reportId){
       try {
-        await axios.post('/api/admin/report/ban_posts/' + reportId);
+        await axios.post('/api/admin/user/ban_posts/' + userId);
+        await axios.delete('/api/admin/report_post/' + reportId);
         this.reports = this.reports.filter(item => item.id !== reportId);
         this.$notify('Banned');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
   }

@@ -8,9 +8,7 @@ use App\Services\Account\AccountService;
 
 class ConfirmEmailController extends Controller
 {
-    public function __construct(private AccountService $accountService)
-    {
-    }
+    public function __construct(private AccountService $accountService){}
     public function __invoke($id, $token)
     {
         try {

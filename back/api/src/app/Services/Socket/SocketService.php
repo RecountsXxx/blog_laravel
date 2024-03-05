@@ -9,7 +9,7 @@ class SocketService
 
     public function __construct()
     {
-        $this->redis = new \Redis(); // Using the Redis extension provided client
+        $this->redis = new \Redis();
         $this->redis->connect(env('REDIS_SOCKET_HOST', 'db.redis.socket'), env('REDIS_SOCKET_PORT', 6379));
         $this->emitter = new SocketIO\Emitter($this->redis);
     }

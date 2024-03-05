@@ -3,13 +3,10 @@
 namespace App\Services\Admin;
 
 use App\Repositories\Admin\AdminRepository;
-use App\Repositories\Category\CategoryRepository;
 
 class AdminService
 {
-
     public function __construct(private AdminRepository $adminRepository){}
-
 
     public function index(){
         return $this->adminRepository->all();

@@ -12,7 +12,6 @@ class AdminRepository extends BaseRepository
     {
         parent::__construct($admin);
     }
-
     public function count()
     {
         return DB::table('admins')->count();

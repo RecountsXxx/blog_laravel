@@ -6,9 +6,7 @@ use App\Repositories\Category\CategoryRepository;
 
 class CategoryService
 {
-
     public function __construct(private CategoryRepository $categoryRepository){}
-
 
     public function index(){
         return $this->categoryRepository->all();

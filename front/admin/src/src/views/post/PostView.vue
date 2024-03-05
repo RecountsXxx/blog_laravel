@@ -66,6 +66,7 @@ export default {
         this.posts = response.data.data[0];
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     limitText(text) {
@@ -78,6 +79,7 @@ export default {
         this.$notify('Deleted');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     }
   }

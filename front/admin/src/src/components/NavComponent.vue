@@ -83,8 +83,6 @@
 import {userStore} from "@/stores/store.js";
 
 export default {
-
-
   name:'navComponent',
   data(){
     return{

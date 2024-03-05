@@ -10,45 +10,34 @@ use App\Services\Admin\AdminService;
 
 class AdminController extends Controller
 {
+    public function __construct(private AdminService $adminService){}
 
-    public function __construct(private AdminService $adminService)
-    {
-        $this->middleware('check.auth.jwt')->only(['index','store','destroy']);
-    }
-
-    public function index()
+    public function index(): BaseWithResponseResource|InternalServerErrorResource
     {
         try {
             $admins = $this->adminService->index();
-            return new BaseWithResponseResource([$admins], 'show admin','200');
-        }
-        catch (\Exception $e) {
+            return new BaseWithResponseResource([$admins], 'show admin', '200');
+        } catch (\Exception $e) {
             return new InternalServerErrorResource(['error' => $e->getMessage()]);
         }
     }
-    public function store(AdminRequest $request)
+
+    public function store(AdminRequest $request): BaseWithResponseResource|InternalServerErrorResource
     {
         try {
-            $admin = $this->adminService->store([
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'password' => $request->input('password'),
-            ]);
-
-            return new BaseWithResponseResource([$admin], 'added admin','200');
-        }
-        catch (\Exception $e) {
+            $admin = $this->adminService->store($request->only(['name', 'email', 'password']));
+            return new BaseWithResponseResource([$admin], 'added admin', '200');
+        } catch (\Exception $e) {
             return new InternalServerErrorResource(['error' => $e->getMessage()]);
         }
     }
+
     public function destroy(string $id): BaseWithResponseResource|InternalServerErrorResource
     {
         try {
             $this->adminService->destroy($id);
-
-            return new BaseWithResponseResource(null, 'delete admin','200');
-        }
-        catch (\Exception $e) {
+            return new BaseWithResponseResource(null, 'delete admin', '200');
+        } catch (\Exception $e) {
             return new InternalServerErrorResource(['error' => $e->getMessage()]);
         }
     }

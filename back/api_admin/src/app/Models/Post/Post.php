@@ -4,6 +4,7 @@ namespace App\Models\Post;
 
 use App\Models\Category\Category;
 use App\Models\Post\PostOperations\Comment;
+use App\Models\Report\ReportPost;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,5 +35,9 @@ class Post extends Model
 
     public function author(){
         return $this->belongsTo(User::class,'author_id','id');
+    }
+
+    public function report(){
+        return $this->belongsTo(ReportPost::class,'post_id');
     }
 }

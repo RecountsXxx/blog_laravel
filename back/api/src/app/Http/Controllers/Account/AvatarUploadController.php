@@ -12,7 +12,6 @@ use OpenApi\Attributes as OAT;
 class AvatarUploadController extends Controller
 {
     public function __construct(private AvatarService $avatarService){}
-
     #[OAT\Post(
         tags: ['account'],
         path: '/api/account/avatar-upload',

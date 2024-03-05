@@ -27,7 +27,7 @@ function Account() {
                 setPosts(response.data.data.posts);
             })
             .catch(error => {
-                console.error('Ошибка при получении постов пользователя:', error);
+                console.error(error);
             });
     };
 
@@ -38,10 +38,11 @@ function Account() {
                     setUser(updatedUser);
                     localStorage.setItem('user', JSON.stringify([updatedUser]));
                     console.log(response);
-                    toast.success('Admin his updated');
+                    toast.success('User his updated');
                 })
                 .catch(error => {
-                    console.error('Ошибка при обновлении профиля:', error);
+                    console.error(error);
+                    toast.error("Error: " + JSON.parse(error.response.request.response).message);
                 });
         } else {
             toast.error('Password is not match');
@@ -56,7 +57,8 @@ function Account() {
                 toast.success('Post his deleted');
             })
             .catch(error => {
-                console.error('Ошибка при удалении поста:', error);
+                console.error(error);
+                toast.error("Error: " + JSON.parse(error.response.request.response).message);
             });
     };
 
@@ -66,7 +68,8 @@ function Account() {
                 toast.success('Avatar his updated');
             })
             .catch(error => {
-                console.error('Ошибка при загрузке аватара:', error);
+                console.error( error);
+                toast.error("Error: " + JSON.parse(error.response.request.response).message);
             });
 
         updateAvatarInNavMenu(user.avatar_url,user.name);

@@ -53,6 +53,10 @@ function PostComponent({ selectedPost }) {
 
     async function handleAddComment() {
         if(user != null){
+            if(user[0].is_banned_comments == true){
+                toast.error('You already banned');
+                return;
+            }
             try {
                 await addComment(newComment, post.id, user[0].id);
                 toast.success('Comment sended!');

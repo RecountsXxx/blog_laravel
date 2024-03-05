@@ -46,13 +46,7 @@ use OpenApi\Attributes as OAT;
 )]
 class RegisterController extends Controller
 {
-    public function __construct(
-        private UserService $userService,
-        private JwtService $jwtService,
-    )
-    {
-    }
-
+    public function __construct(private UserService $userService, private JwtService $jwtService){}
     public function __invoke(RegisterRequest $request): mixed
     {
         if ($request->input('password') != $request->input('password_confirmation')){

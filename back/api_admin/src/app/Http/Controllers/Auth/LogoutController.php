@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\BaseWithResponseResource;
 use App\Http\Resources\Errors\InternalServerErrorResource;
 use App\Services\Auth\JwtService;
-use OpenApi\Attributes as OAT;
-
 class LogoutController extends Controller
 {
     public function __construct(private readonly JwtService  $jwtService,){}

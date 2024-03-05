@@ -1,7 +1,13 @@
 <template>
   <main class="p-3">
     <h1 class="text-black mt-2 mb-4">Users</h1>
-    <input class="input-group form-control mb-3" type="text" v-model="searchQuery" placeholder="Search...">
+    <div class="d-flex gap-4 flex-row">
+      <input class="input-group form-control" type="text" v-model="user.name" placeholder="Enter name">
+      <input class="input-group form-control" type="email" v-model="user.email" placeholder="Enter email">
+      <input class="input-group form-control" type="password" v-model="user.password" placeholder="Enter password">
+      <button class="btn btn-primary" @click="addUser">Add</button>
+    </div>
+    <hr/>
     <div style="max-height: 800px; overflow-y: auto;">
       <table class="table table-striped w-100">
         <thead>
@@ -46,7 +52,12 @@ export default {
   data() {
     return {
       users: [],
-      searchQuery: ''
+      searchQuery: '',
+      user: {
+        name: '',
+        email: '',
+        password: ''
+      }
     };
   },
   computed: {
@@ -60,13 +71,29 @@ export default {
     this.fetchUsers();
   },
   methods: {
+    async addUser(){
+      try{
+        const response = await axios.post('/api/auth/register',{
+          name: this.user.name,
+          email: this.user.email,
+          password: this.user.password,
+          password_confirmation: this.user.password
+        });
+        console.log(response.data.data.user);
+        this.$notify('Added user');
+        this.users.push(response.data.data.user);
+
+      }catch (error) {
+        console.error('Error:', error.response);
+      }
+    },
     async fetchUsers() {
       try {
         const response = await axios.get('/api/admin/user');
-        console.log(response.data.data[0]);
         this.users = response.data.data[0];
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     async deleteUser(userId){
@@ -76,6 +103,7 @@ export default {
         this.$notify('Deleted');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     async banPosts(userId){
@@ -90,6 +118,7 @@ export default {
         this.$notify('Banned');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     async banComments(userId){
@@ -104,6 +133,7 @@ export default {
         this.$notify('Banned');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     async unban(userId){
@@ -119,6 +149,7 @@ export default {
         this.$notify('Unbanned');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     }
   }

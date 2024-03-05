@@ -6,34 +6,26 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\BaseWithResponseResource;
 use App\Http\Resources\Errors\InternalServerErrorResource;
 use App\Services\Post\PostService;
-use OpenApi\Attributes as OAT;
 
 class PostController extends Controller
 {
+    public function __construct(private PostService $postService){}
 
-    public function __construct(private PostService $postService)
-    {
-        $this->middleware('check.auth.jwt')->only(['index','store','destroy']);
-    }
-
-    public function index()
+    public function index(): BaseWithResponseResource|InternalServerErrorResource
     {
         try {
             $posts = $this->postService->index();
-            return new BaseWithResponseResource([$posts], 'show posts','200');
-        }
-        catch (\Exception $e) {
+            return new BaseWithResponseResource([$posts], 'show posts', '200');
+        } catch (\Exception $e) {
             return new InternalServerErrorResource(['error' => $e->getMessage()]);
         }
     }
-    public function destroy(string $id)
+    public function destroy(string $id): BaseWithResponseResource|InternalServerErrorResource
     {
         try {
             $this->postService->destroy($id);
-
-            return new BaseWithResponseResource(null, 'delete post','200');
-        }
-        catch (\Exception $e) {
+            return new BaseWithResponseResource(null, 'delete post', '200');
+        } catch (\Exception $e) {
             return new InternalServerErrorResource(['error' => $e->getMessage()]);
         }
     }

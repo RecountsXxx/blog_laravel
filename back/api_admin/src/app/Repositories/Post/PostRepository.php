@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class PostRepository extends BaseRepository
 {
-    //сделать под репозиторий
     public function __construct(private Post $post)
     {
         parent::__construct($post);

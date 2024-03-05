@@ -18,9 +18,6 @@ class PostController extends Controller
     {
         $this->middleware('check.auth.jwt')->only(['store','update','destroy']);
     }
-
-
-
     #[OAT\Post(
         tags: ['post'],
         path: '/api/post',

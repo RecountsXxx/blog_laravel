@@ -86,6 +86,7 @@ export default {
         this.report_comment_count = response.data.data[0].reports_comments;
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
   },

@@ -4,7 +4,7 @@
 
     <div class="d-flex gap-4 flex-row">
       <input class="input-group form-control" type="text" v-model="createdCategoryName" placeholder="Enter category name">
-      <button class="btn btn-primary" @click="addCategory">Add category</button>
+      <button class="btn btn-primary" @click="addCategory">Add</button>
     </div>
     <hr/>
 
@@ -64,6 +64,7 @@ export default {
         this.categories = response.data.data.categories;
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     async deleteCategory(categoryId){
@@ -73,6 +74,7 @@ export default {
         this.$notify('Deleted');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     async addCategory(){
@@ -85,6 +87,7 @@ export default {
         this.$notify('Created category');
       }catch(error){
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     }
   }

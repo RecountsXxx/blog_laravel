@@ -8,10 +8,7 @@ use App\Repositories\Report\ReportPostRepository;
 class ReportService
 {
 
-    public function __construct(private ReportCommentRepository $commentRepository, private ReportPostRepository $postRepository)
-    {
-
-    }
+    public function __construct(private ReportCommentRepository $commentRepository, private ReportPostRepository $postRepository){}
 
     public function reportComment($data)
     {

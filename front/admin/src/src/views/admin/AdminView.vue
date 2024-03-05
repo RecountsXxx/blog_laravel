@@ -1,6 +1,15 @@
 <template>
   <main class="p-3">
     <h1 class="text-black mt-2 mb-4">Admins</h1>
+
+    <div class="d-flex gap-4 flex-row">
+      <input class="input-group form-control" type="text" v-model="admin.name" placeholder="Enter name">
+      <input class="input-group form-control" type="email" v-model="admin.email" placeholder="Enter email">
+      <input class="input-group form-control" type="password" v-model="admin.password" placeholder="Enter password">
+      <button class="btn btn-primary" @click="addAdmin">Add</button>
+    </div>
+    <hr/>
+
     <input class="input-group form-control mb-3" type="text" v-model="searchQuery" placeholder="Search...">
     <div style="max-height: 800px; overflow-y: auto;">
       <table class="table table-striped w-100">
@@ -37,7 +46,12 @@ export default {
   data() {
     return {
       admins: [],
-      searchQuery: ''
+      searchQuery: '',
+      admin: {
+        name: '',
+        email: '',
+        password: ''
+      }
     };
   },
   computed: {
@@ -51,13 +65,28 @@ export default {
     this.fetchAdmins();
   },
   methods: {
+    async addAdmin(){
+      try{
+        const response = await axios.post('/api/admin/auth/register',{
+          name: this.admin.name,
+          email: this.admin.email,
+          password: this.admin.password
+        });
+        this.$notify('Added admin');
+        this.admins.push(response.data.data.user);
+
+      }catch (error) {
+        console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
+      }
+    },
     async fetchAdmins() {
       try {
         const response = await axios.get('/api/admin/admin');
-        console.log(response.data.data[0]);
         this.admins = response.data.data[0];
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     },
     async deleteAdmin(adminId){
@@ -67,6 +96,7 @@ export default {
         this.$notify('Deleted');
       } catch (error) {
         console.error('Error:', error.response);
+        this.$notify("Error: " + JSON.parse(error.response.request.response).message);
       }
     }
   }
