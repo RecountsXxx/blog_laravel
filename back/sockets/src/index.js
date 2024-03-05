@@ -14,9 +14,11 @@ const SERVER_PORT = process.env.SERVER_PORT || 3000;
 /**
  * Import modules
  */
+import express from 'express'; // Импортируем express
 import { Server } from 'socket.io';
 import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
+import cors from 'cors'; // Импортируем CORS middleware
 
 /**
  * Create redis
@@ -33,10 +35,19 @@ subClient.on('connect', () => {
 });
 
 /**
+ * Create express app
+ */
+const app = express(); // Создаем express приложение
+app.use(cors()); // Применяем CORS middleware
+
+/**
  * Create socket server
  */
-const io = new Server();
+const server = app.listen(SERVER_PORT, () => {
+    console.log(`Server is running on port ${SERVER_PORT}`);
+});
 
+const io = new Server(server);
 
 Promise.all([pubClient.connect(), subClient.connect()]).then(() => {
 
@@ -49,11 +60,10 @@ Promise.all([pubClient.connect(), subClient.connect()]).then(() => {
         socket.on('disconnect', data => {
             console.debug('disconnect: ' + socket.handshake.address);
         })
+        socket.on('socket.message.admin', (message) => {
+            io.emit('socket.message.admin', message);
+        });
     })
-
-    io.listen(SERVER_PORT);
-
-// Пинг сервера - для всех (пустое бессмысленное сообщение)
     setInterval(() =>{
         io.emit('socket.ping', Date.now())
     }, 10000)

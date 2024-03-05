@@ -74,19 +74,40 @@
         </ul>
       </div>
 
+      <div class="w-100 mt-2">
+        <button @click="showModal = true" class="btn w-full w-100 btn-secondary d-flex align-items-center" type="button">
+          <img height="30px" width="30px"  src="data:image/png;base64,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">
+          <label class="fs-5 text-decoration-none text-white ms-3">Send message</label>
+        </button>
+      </div>
+
+      <modal-form v-if="showModal" @close="showModal = false" @add="addItem"></modal-form>
+
+
+
       <label class="position-absolute bottom-0 text-white ms-4 mb-2">© Copyright Artzone LLC  2024</label>
     </div>
   </div>
+  <!-- Подключение jQuery -->
+
 </template>
 
 <script>
+
 import {userStore} from "@/stores/store.js";
+import ModalForm from "@/components/ModalForm.vue";
+import socket from "@/services/Socket/SocketService.js";
 
 export default {
   name:'navComponent',
+  components: {
+    ModalForm
+  },
   data(){
     return{
-      name:'Name'
+      name:'Name',
+      showModal: false,
+      items: []
     }
   },
   created() {
@@ -97,6 +118,9 @@ export default {
   methods:{
     reloadPage(){
       location.reload();
+    },
+    addItem(item) {
+      this.items.push(item);
     }
   }
 }

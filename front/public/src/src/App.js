@@ -14,6 +14,8 @@ import RegisterPage from "./pages/auth/RegisterPage";
 import Account from "./pages/account/Account";
 import axios from "axios";
 import Editor from "./pages/editor/EditorComponent";
+import {toast} from "react-toastify";
+import {socket} from "./socket";
 
 
 function App() {
@@ -22,29 +24,13 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('token') !== null);
 
-  if(localStorage.getItem('token') != null){
+  if(localStorage.getItem('token') != null) {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
   }
-  // let socket = io('/', {
-  //   autoConnect: true
-  // });
-  // socket.on('connect', (data) => {
-  //   console.log('connect')
-  // })
-  //
-  // socket.on('disconnect', (data) => {
-  //   console.log('disconnect')
-  //   console.log(data)
-  // })
-  // socket.on ('socket.myNameIs', (data) => {
-  //   console.log('MyName Is')
-  //   console.log(data)
-  // })
-  // socket.on ('socket.php', (data) => {
-  //   toast.warning("From Laravel: " + data);
-  // })
-  //
-  // console.log('App Starting')
+
+  socket.on ('socket.message.admin', (data) => {
+    toast.info("From web-site: " + data);
+  })
 
   return (
       <div className="App">
