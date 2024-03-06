@@ -29,11 +29,6 @@ docker exec db.mysql.main mysql -h localhost -P 9090 -u root -ppassword -e "CREA
 docker exec -i db.mysql.main mysql -h localhost -P 9090 -u root -ppassword sne < ./sne.sql
 
 
-
-
-# Перенос папки avatars
-mv ./avatars ./back/api/src/storage/app/public
-
 # Создание символической ссылки для хранилища Laravel
 docker exec laravel.api php artisan storage:link
 
