@@ -1,8 +1,8 @@
 I made an example of a blog where you can create your own posts, comment, complain about posts and comments, view posts, and all this can be managed through the admin panel.
 <h2>Deployment</h2>
 <ul>
-  <li>Start script "setup.sh" command: `/bin/bash/setup.sh` and wait</li>
-  <li>For other runs, enter the command: `docker-compose up -d` </li>
+  <li>Start script "setup.sh" command: <code>/bin/bash/setup.sh</code> and wait</li>
+  <li>For other runs, enter the command: <code>docker-compose up -d</code></li>
 </ul>
 ![Знімок екрана з 2024-02-29 18-32-34](https://github.com/RecountsXxx/blog_laravel/assets/107986811/503e344b-d06a-4e0a-ac88-9190bf78cba3)
 ![Знімок екрана з 2024-02-29 18-34-24](https://github.com/RecountsXxx/blog_laravel/assets/107986811/26bed455-3b39-424f-bd45-2bc8833de703)
