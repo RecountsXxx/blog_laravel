@@ -27,9 +27,8 @@ docker exec laravel.api.admin php artisan key:generate
 docker exec db.mysql.main mysql -h localhost -P 9090 -u root -ppassword -e "DROP DATABASE sne;"
 docker exec db.mysql.main mysql -h localhost -P 9090 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS sne;"
 docker exec -i db.mysql.main mysql -h localhost -P 9090 -u root -ppassword sne < ./sne.sql
-
-
 # Создание символической ссылки для хранилища Laravel
 docker exec laravel.api php artisan storage:link
+docker-compose restart
 
 echo "Установка завершена!"
