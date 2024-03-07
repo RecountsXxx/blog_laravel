@@ -8,11 +8,11 @@ I made an example of a blog where you can create your own posts, comment, compla
 
 # Tech Stack Overview
 
- **Front-end public:** ReactJs, Bootstrap
- **Front-end admin:** VueJs, Bootstrap
- **Back-end:** PHP, Laravel, RestFull, Microservices, Nginx, Redis, Supervisor, Docker
- **Database:** MySQL
- **Socket service:** NodeJS, SocketIO
+- **Front-end public:** ReactJs, Bootstrap
+- **Front-end admin:** VueJs, Bootstrap
+- **Back-end:** PHP, Laravel, RestFull, Microservices, Nginx, Redis, Supervisor, Docker
+- **Database:** MySQL
+- **Socket service:** NodeJS, SocketIO
     
 # Features for Website
 
