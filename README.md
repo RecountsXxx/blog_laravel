@@ -8,21 +8,34 @@ I made an example of a blog where you can create your own posts, comment, compla
 
 Technologies Used
 
-    Front-end: HTML, CSS, JavaScript, Bootstrap, Font-Awesome
-    Back-end: Node.js, Express.js
-    Database: MongoDB
-    Real-time communication: Socket.io
-    Admin panel: CRUD operations
-    Security: System bans for users
+    Front-end public: ReactJs, Bootstrap
+    Front-end admin: VueJs, Bootstrap
+    Back-end: PHP, Laravel, RestFUll, Microservices, Nginx, Redis, Supervisor, Docker
+    Database: MySQL
+    Socket service: NodeJS, SocketIO
+    
+Features users website
+<ul>
+    <li>Search posts</li>
+    <li>Create posts</li>
+    <li>Delete posts</li>
+    <li>Like posts</li>
+    <li>Write comments on posts</li>
+    <li>Report posts and comments</li>
+    <li>Pagination</li>
+    <li>Real-time messaging from admin panel to users' websites</li>
+    <li>System bans for users</li>
+    <li>Swagger documentation</li>
+</ul>
 
-Features
+Features users website
+<ul>
+  <li>CRUD operations for all</li>
+  <li>Send messages from admin panel to users website</li>
+  <li>Statistics (Dashboard)</li>
+  <li>Moderating, ban users when reported</li>
+</ul>
 
-    Search posts
-    Like posts
-    Write comments on posts
-    Report posts and comments
-    Pagination
-    Admin panel with CRUD operations for all components
-    Real-time messaging from admin panel to users' websites
-    System bans for users
+
+    
 
