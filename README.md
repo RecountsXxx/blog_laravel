@@ -39,8 +39,8 @@ Technologies Used
 ## Screenshots
 ![Знімок екрана з 2024-03-07 18-50-34](https://github.com/RecountsXxx/blog_laravel/assets/107986811/3eece95a-83a0-4c65-b0e8-58bbbd2c1a9c)
 ![Знімок екрана з 2024-03-07 18-50-28](https://github.com/RecountsXxx/blog_laravel/assets/107986811/3c1145a9-c175-48d7-88d9-6916ec7c0225)
-![Знімок екрана з 2024-03-07 18-51-22](https://github.com/RecountsXxx/blog_laravel/assets/107986811/ee9cc07c-36f3-4f65-99c4-29515019d515)
 ![Знімок екрана з 2024-03-07 18-51-04](https://github.com/RecountsXxx/blog_laravel/assets/107986811/b135b6cd-b40e-4a75-a8f2-86427e92aebb)
+![Знімок екрана з 2024-03-07 18-51-22](https://github.com/RecountsXxx/blog_laravel/assets/107986811/ee9cc07c-36f3-4f65-99c4-29515019d515)
 ![Знімок екрана з 2024-03-07 18-51-59](https://github.com/RecountsXxx/blog_laravel/assets/107986811/b6268059-45fb-4a20-a24c-fb801c8cd6e5)
 ![Знімок екрана з 2024-03-07 18-51-55](https://github.com/RecountsXxx/blog_laravel/assets/107986811/c53d35e5-0acb-40ba-a6a2-b3f98fc4e740)
 
