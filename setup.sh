@@ -8,10 +8,10 @@ npm i --prefix ./front/public/src
 npm i --prefix ./back/sockets/src
 
 docker exec laravel.api composer install
-docker exec laravel.api.admin composer install
+docker exec laravel.api_admin composer install
 
 docker exec laravel.api php artisan key:generate
-docker exec laravel.api.admin php artisan key:generate
+docker exec laravel.api_admin php artisan key:generate
 
 docker exec db.mysql.main mysql -h localhost -P 9090 -u root -ppassword -e "DROP DATABASE sne;"
 docker exec db.mysql.main mysql -h localhost -P 9090 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS sne;"
