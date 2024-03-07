@@ -21,6 +21,6 @@ class ReportComment extends Model
 
     public function comment()
     {
-        return $this->hasMany(Comment::class,'id');
+        return $this->hasMany(Comment::class,'id','comment_id');
     }
 }

@@ -34,6 +34,6 @@ class Post extends Model
     }
 
     public function report(){
-        return $this->belongsTo(ReportPost::class,'post_id');
+        return $this->belongsTo(ReportPost::class,'post_id','id');
     }
 }

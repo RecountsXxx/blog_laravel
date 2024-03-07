@@ -26,6 +26,6 @@ class Comment extends Model
 
     public function report()
     {
-        return $this->belongsTo(ReportComment::class, 'comment_id');
+        return $this->belongsTo(ReportComment::class, 'comment_id','id');
     }
 }
