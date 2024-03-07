@@ -20,10 +20,6 @@ class Post extends Model
             $post->category->updatePostCount();
         });
 
-        static::updated(function ($post) {
-            $post->category->updatePostCount();
-        });
-
         static::deleted(function ($post) {
             $post->category->updatePostCount();
         });

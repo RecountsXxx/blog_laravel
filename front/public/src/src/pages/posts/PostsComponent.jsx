@@ -42,8 +42,6 @@ export default function PostsComponent({ selectedCategory, selectedPost }) {
             setIsLoading(false);
         }
     };
-
-    // Остальной код компонента остается без изменений
     function selectPost(event, key) {
         setSelectedKey(key);
         selectedPost(key);

@@ -25,11 +25,9 @@ class GenerateGravatarForUser implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(AvatarService $avaService, SocketService $socketService): void
+    public function handle(AvatarService $avaService): void
     {
         \Laravel\Prompts\info("handle job");
         $avaService->createAvatar($this->user_id);
-        $socketService->emit('socket.php', "From Job generate avatar " . date('Y-m-d H:i:s'));
-
     }
 }
