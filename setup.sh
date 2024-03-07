@@ -7,8 +7,6 @@ npm i --prefix ./front/admin/src
 npm i --prefix ./front/public/src
 npm i --prefix ./back/sockets/src
 
-docker-compose restart
-
 docker exec laravel.api composer install
 docker exec laravel.api.admin composer install
 
