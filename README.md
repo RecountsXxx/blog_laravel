@@ -17,7 +17,7 @@ Technologies Used
 Features for Users' Website
 User Interactions
 
-    Search Posts: Users can easily search for posts using keywords, tags, or categories to find the content they are interested in.
+  Search Posts: Users can easily search for posts using keywords, tags, or categories to find the content they are interested in.
     Create Posts: Users have the ability to create their own posts, sharing their thoughts, images, or videos with the community.
     Delete Posts: Users can delete their own posts if they choose to remove their content from the website.
     Like Posts: Allows users to express their appreciation for a post, helping to promote popular content within the community.
@@ -30,7 +30,7 @@ User Interactions
 
 Admin Features
 
-    CRUD Operations for All: Admins have complete control over the content with the ability to create, read, update, and delete (CRUD) posts, comments, and user accounts.
+  CRUD Operations for All: Admins have complete control over the content with the ability to create, read, update, and delete (CRUD) posts, comments, and user accounts.
     Send Messages from Admin Panel to Users' Website: This feature allows admins to communicate directly with users through their website, whether for notifications, updates, or individual messages.
     Statistics (Dashboard): A powerful dashboard that provides admins with real-time statistics about user engagement, post popularity, and overall website activity, aiding in strategic decision-making.
     Moderating, Ban Users When Reported: Admins have the authority to moderate content and user behavior, including banning users based on reports and ensuring compliance with website guidelines.
