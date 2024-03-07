@@ -37,7 +37,6 @@ Technologies Used
 - **Moderating, Ban Users When Reported**: Admins have the authority to moderate content and user behavior, including banning users based on reports and ensuring compliance with website guidelines.
 
 ## Screenshots
-![Знімок екрана з 2024-03-07 18-54-15](https://github.com/RecountsXxx/blog_laravel/assets/107986811/d8a8eb4a-cc95-421b-a9bd-8cc4f3eb6521)
 ![Знімок екрана з 2024-03-07 18-51-04](https://github.com/RecountsXxx/blog_laravel/assets/107986811/b135b6cd-b40e-4a75-a8f2-86427e92aebb)
 ![Знімок екрана з 2024-03-07 18-50-34](https://github.com/RecountsXxx/blog_laravel/assets/107986811/3eece95a-83a0-4c65-b0e8-58bbbd2c1a9c)
 ![Знімок екрана з 2024-03-07 18-50-28](https://github.com/RecountsXxx/blog_laravel/assets/107986811/3c1145a9-c175-48d7-88d9-6916ec7c0225)
