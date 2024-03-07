@@ -6,13 +6,40 @@ I made an example of a blog where you can create your own posts, comment, compla
 </ul>
 <h2>About</h2>
 
-Technologies Used
+# Tech Stack Overview
 
-    Front-end public: ReactJs, Bootstrap
-    Front-end admin: VueJs, Bootstrap
-    Back-end: PHP, Laravel, RestFUll, Microservices, Nginx, Redis, Supervisor, Docker
-    Database: MySQL
-    Socket service: NodeJS, SocketIO
+## Front-end
+
+- **Public**:
+  - **Framework**: ReactJs
+  - **UI Toolkit**: Bootstrap
+
+- **Admin**:
+  - **Framework**: VueJs
+  - **UI Toolkit**: Bootstrap
+
+## Back-end
+
+- **Languages and Frameworks**:
+  - **Core Language**: PHP
+  - **Framework**: Laravel
+  - **Architecture**: Restful, Microservices
+- **Infrastructure**:
+  - **Web Server**: Nginx
+  - **In-memory Data Structure Store**: Redis
+  - **Process Control System**: Supervisor
+- **Containerization**:
+  - **Platform**: Docker
+
+## Database
+
+- **RDBMS**: MySQL
+
+## Socket Service
+
+- **Runtime Environment**: NodeJS
+- **Library for Real-time Web Applications**: Socket.IO
+
     
 # Features for Website
 
