@@ -1,42 +1,42 @@
 I made an example of a blog where you can create your own posts, comment, complain about posts and comments, view posts, and all this can be managed through the admin panel. Here's how you can get it running and what it includes:
 
-## Deployment 🚀
+## Deployment 
 - **Start script "setup.sh" command:** Run `/bin/bash/setup.sh` and wait for the initial setup.
 - **For other runs, enter the command:** `docker-compose up -d` to start the services.
 
-## About 📘
+## About 
 
-# Tech Stack Overview 🛠️
+# Tech Stack Overview 
 
-- **Front-end public:** ReactJs, Bootstrap 🌐
-- **Front-end admin:** VueJs, Bootstrap 🛠️
-- **Back-end:** PHP, Laravel, RestFull, Microservices, Nginx, Redis, Supervisor, Docker 🏗️
-- **Database:** MySQL 📚
-- **Socket service:** NodeJS, SocketIO 🌐
+- **Front-end public:** ReactJs, Bootstrap 
+- **Front-end admin:** VueJs, Bootstrap 
+- **Back-end:** PHP, Laravel, Nginx, Redis, Supervisor, Docker 
+- **Database:** MySQL 
+- **Socket service:** NodeJS, SocketIO 
     
-# Features for Website 🌟
+# Features for Website 
 
-## User Interactions 👥
+## User Interactions 
 
-- **Search Posts**: Users can easily search for posts using keywords, tags, or categories. 🔍
-- **Create Posts**: Users have the ability to share their thoughts or media. ✏️
-- **Delete Posts**: Users can remove their content. 🗑️
-- **Like Posts**: Allows appreciation for posts, promoting content within the community. ❤️
-- **Write Comments on Posts**: Engage by writing comments. 💬
-- **Report Posts and Comments**: Report inappropriate content for review. 🚩
-- **Pagination**: Organizes content into pages for easier browsing. 📄
-- **Real-time Messaging from Admin Panel**: Direct communication from administrators. 📢
-- **System Bans for Users**: Maintain a healthy community environment by banning violators. 🚫
-- **Swagger Documentation**: Clear API documentation for easier development. 📖
+- **Search Posts**: Users can easily search for posts using keywords, tags, or categories.
+- **Create Posts**: Users have the ability to share their thoughts or media. 
+- **Delete Posts**: Users can remove their content. 
+- **Like Posts**: Allows appreciation for posts, promoting content within the community. 
+- **Write Comments on Posts**: Engage by writing comments.
+- **Report Posts and Comments**: Report inappropriate content for review.
+- **Pagination**: Organizes content into pages for easier browsing.
+- **Real-time Messaging from Admin Panel**: Direct communication from administrators.
+- **System Bans for Users**: Maintain a healthy community environment by banning violators.
+- **Swagger Documentation**: Clear API documentation for easier development.
 
-## Admin Features 👩‍💼👨‍💼
+## Admin Features 
 
-- **CRUD Operations for All**: Full control over content and user accounts. 🛠️
-- **Send Messages from Admin Panel to Users' Website**: Direct communication with users. 📤
-- **Statistics (Dashboard)**: Real-time user engagement and activity stats. 📊
-- **Moderating, Ban Users When Reported**: Ensure compliance with website guidelines. 🔨
-
-## Screenshots 📸
+- **CRUD Operations for All**: Full control over content and user accounts. 
+- **Send Messages from Admin Panel to Users' Website**: Direct communication with users.
+- **Statistics (Dashboard)**: Real-time user engagement and activity stats.
+- **Moderating, Ban Users When Reported**: Ensure compliance with website guidelines.
+- 
+## Screenshots 
 ![Знімок екрана з 2024-03-07 18-50-34](https://github.com/RecountsXxx/blog_laravel/assets/107986811/3eece95a-83a0-4c65-b0e8-58bbbd2c1a9c)
 ![Знімок екрана з 2024-03-07 18-50-28](https://github.com/RecountsXxx/blog_laravel/assets/107986811/3c1145a9-c175-48d7-88d9-6916ec7c0225)
 ![Знімок екрана з 2024-03-07 18-51-04](https://github.com/RecountsXxx/blog_laravel/assets/107986811/b135b6cd-b40e-4a75-a8f2-86427e92aebb)
